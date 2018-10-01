@@ -1,0 +1,42 @@
+@import '~@angular/material/theming';
+@import 'theme-defaults.scss';
+@include mat-core();
+
+// Typography
+$custom-typography: mat-typography-config(
+  $font-family: $main-font-family,
+  $input: mat-typography-level(16px, 1, 600),
+  $button: mat-typography-level(14px, 1.25, 600),
+  $subheading-1: mat-typography-level(20px, 1.25, 600),
+  $subheading-2: mat-typography-level(14pt, 1.25, 600),
+  $body-1: mat-typography-level(16px, 24px, 500),
+  $body-2: mat-typography-level(16px, 24px, 400),
+  $caption: mat-typography-level(12px, 16px, 400)
+);
+@include angular-material-typography($custom-typography);
+
+// Main Theme
+$app-primary: mat-palette($md-primary-palette,500);
+$app-accent: mat-palette($md-acc-palette,500);
+$app-warn: mat-palette($md-warn-palette,500);
+$app-theme: mat-light-theme($app-primary,$app-accent,$app-warn);
+@include angular-material-theme($app-theme);
+
+//Checkbox
+$checkbox-primary: mat-palette($mat-yellow,500);
+$checkbox-accent: mat-palette($mat-green,500);
+$checkbox-warn: mat-palette($md-warn-palette,500);
+$checkbox-theme: mat-light-theme($checkbox-primary,$checkbox-accent,$checkbox-warn);
+@include mat-checkbox-theme($checkbox-theme);
+
+//Radio Button
+$radio-primary: mat-palette($mat-yellow,500);
+$radio-accent: mat-palette($mat-green,500);
+$radio-warn: mat-palette($md-warn-palette,500);
+$radio-theme: mat-light-theme($checkbox-primary,$checkbox-accent,$checkbox-warn);
+@include mat-radio-theme($checkbox-theme);
+
+
+
+
+

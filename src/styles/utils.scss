@@ -1,0 +1,94 @@
+.white {
+    color: white;
+}
+
+.white-background {
+    background-color: white;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.semi-bold {
+    font-weight: 500;
+}
+
+.animated {
+    // transition: 0.3s all ease-in-out;
+    transition: all 225ms cubic-bezier(.4, 0, .2, 1)
+}
+
+.trimmed {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.separator {
+    color: #8b3836;
+    background-color: #95c1b2;
+    font-family: sans-serif;
+}
+
+.color-secondary {
+    color: $secondary-color;
+}
+
+.color-secondary-background {
+    background-color: $secondary-color;
+}
+
+.search-highlight {
+    font-weight: 500;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.display-block {
+    display: block;
+}
+
+.display-inline-block {
+    display: inline-block;
+}
+
+.collapsed {
+    display: none;
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.full-size {
+    @extend .full-width;
+    @extend .full-height;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}

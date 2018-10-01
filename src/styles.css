@@ -1,0 +1,164 @@
+/* You can add global styles to this file, and also import other style files */
+@import "styles/site.scss";
+
+html,
+body,
+main {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  font-family: "Segoe UI", "Roboto", sans-serif;
+}
+
+textarea {
+  font-family: "Segoe UI", "Roboto", sans-serif;
+}
+
+.app-content .content-header-text,
+#main-content .mat-subheading-1 {
+  font-weight: 700;
+}
+
+.primary-color {
+  color: #722b90;
+}
+
+.primary-background {
+  background-color: #722b90;
+}
+
+.secondary-navbar-container {
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 32px;
+  width: calc(100% - 64px);
+}
+
+.secondary-navbar-container .secondary-navbar-div {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.text-area-container {
+  width: 100%;
+  height: 100px;
+  border: 1px solid #d8d8d8;
+  background: white;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.text-area-container .textarea {
+      border: none;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      resize: none;
+      outline: none;
+      font-weight: 600;
+      font-size: 14pt;
+      box-sizing: border-box;
+      /* &:hover {
+        border-color: #333333;
+        box-shadow: 0 0 0 2px #333333;
+      }
+      &:focus {
+        box-shadow: 0 0 0 2px $primary-color;
+        border-color: $primary-color;
+        caret-color: $primary-color;
+      } */
+  }
+
+.view-header,
+.view-footer {
+  display: none;
+}
+
+.app-content > .content-header > .view-header,
+.app-content > .content-footer > .view-footer {
+  display: block;
+}
+
+/* .styled-scrollbar {
+  ::-webkit-scrollbar {
+    width: 18px;
+    height: 18px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    border-radius: 1px;
+    -webkit-border-radius: 1px;
+    background-color: rgba(0, 0, 0, 0.15);
+    box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05),
+      inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+    -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05),
+      inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+  }
+  ::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+  ::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+}
+
+$grid-margin-large: 60px;
+$grid-margin-medium: 30px;
+.grid-container-root {
+  overflow: auto;
+  height: 200px;
+  .grid-container,
+  .grid-header {
+    padding-left: $grid-margin-large;
+    padding-right: $grid-margin-large;
+    &.media-md {
+      padding-left: $grid-margin-medium;
+      padding-right: $grid-margin-medium;
+    }
+    &.on-mobile {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  .grid-container {
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    width: 100%;
+    z-index: 1;
+    &:not(.on-mobile):not(.no-abc-menu) {
+      margin-top: 50px;
+    }
+    &.on-mobile:not(.no-abc-menu) {
+      padding-top: 0;
+      width: calc(100% - 30px);
+    }
+  }
+  .grid-divider {
+    width: calc(100% - 2 * #{$grid-margin-large});
+    margin-left: $grid-margin-large;
+    margin-right: $grid-margin-large;
+    &.media-md {
+      margin-left: $grid-margin-medium;
+      margin-right: $grid-margin-medium;
+      width: calc(100% - 2 * #{$grid-margin-medium});
+    }
+  }
+  .grid-tile-root {
+    background: white;
+    height: 100%; // width: 100%;
+    width: calc(
+      100% - 2px
+    ); // 1px to reduce shimmering effect (right border disappearing)
+    margin-left: 1px;
+    margin-right: 1px;
+    cursor: default;
+  }
+}*/
