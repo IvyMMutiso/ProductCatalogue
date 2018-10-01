@@ -1,8 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductsCatalogueComponent } from './modules/products/products-catalogue/products-catalogue.component';
-import { AddEditProductsComponent } from './modules/products/add-edit-products/add-edit-products.component';
-import { AddEditCategoriesComponent } from './modules/products/add-edit-categories/add-edit-categories.component';
 import { ProductsReportComponent } from './products-report/products-report.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
