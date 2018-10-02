@@ -2,6 +2,7 @@ const mysql = require("mysql");
 const express = require("express");
 var app = express();
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 app.use(bodyParser.json());
 
@@ -11,6 +12,13 @@ var mysqlConnection = mysql.createConnection({
   password: "root",
   database: "product_catalogue"
 });
+
+var corsOptions = {
+    origin: "*",
+    optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 
 mysqlConnection.connect((err)=>{
     if(!err){
@@ -26,7 +34,8 @@ app.listen(3000, ()=>console.log('Express server running at port 3000'));
 app.get('/categories', (req, res)=>{
     mysqlConnection.query('SELECT * FROM categories', (err, rows, fields)=>{
         if(!err){
-            console.log(rows);
+           res.send(JSON.stringify(rows));
+            // console.log(rows);
         } else {
             console.log(err);
         }
