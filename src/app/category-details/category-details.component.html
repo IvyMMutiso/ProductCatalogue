@@ -5,13 +5,13 @@
    validate for uniquness and null
  </p>
 
- <form fxLayout="column" fxLayoutAlign="start stretch">
+ <form fxLayout="column" fxLayoutAlign="start stretch" [formGroup]="categoriesForm"> 
     <mat-form-field class="input-default" fxFlex>
-      <input matInput placeholder="Category Name" value="Sushi">
+      <input formControlName="category" matInput placeholder="Category Name" value="Sushi" required>
     </mat-form-field>
   </form>
 
  <div fxLayout="row" fxLayoutAlign="end center">
-    <button mat-raised-button class="action-button" (click)="saveCategory()" [disabled]="!isBackOfficeButttonEnabled">Save</button>
-    <button mat-raised-button class="action-button" (click)="cancel()">Cancel</button>
+    <button mat-raised-button class="btn action-button" (click)="saveCategory()" [disabled]="!isBackOfficeButttonEnabled">Save</button>
+    <button mat-raised-button class="btn action-button" (click)="cancel()">Cancel</button>
   </div>

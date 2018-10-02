@@ -5,17 +5,17 @@
   validate product name for uniqueness
 </p>
 
-<form fxLayout="column" fxLayoutAlign="start stretch">
-  <mat-form-field fxFlex>
-    <mat-select placeholder="Product Category">
+<form fxLayout="column" fxLayoutAlign="start stretch" [formGroup]="productsForm">
+  <mat-form-field class="input-default" fxFlex>
+    <mat-select placeholder="Product Category" formControlName="category">
       <mat-option></mat-option>
       <!-- <mat-option *ngFor="let food of foods" [value]="food.value">
             {{food.viewValue}}
           </mat-option> -->
     </mat-select>
   </mat-form-field>
-  <mat-form-field fxFlex>
-    <input matInput placeholder="Product Name" value="Sushi">
+  <mat-form-field class="input-default" fxFlex>
+    <input matInput formControlName="product" placeholder="Product Name" value="Sushi">
   </mat-form-field>
 </form>
 
