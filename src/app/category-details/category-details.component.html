@@ -1,21 +1,17 @@
-<h1>Category Details</h1>
-<p>
-  category-details works!
-  Single input for category name.
-  validate for uniquness and null
-</p>
+ <h1>Category Details</h1>
+ <p>
+   category-details works!
+   Single input for category name.
+   validate for uniquness and null
+ </p>
 
-<form class="example-form">
-    <mat-form-field fxFlex>
+ <form fxLayout="column" fxLayoutAlign="start stretch">
+    <mat-form-field class="input-default" fxFlex>
       <input matInput placeholder="Category Name" value="Sushi">
     </mat-form-field>
   </form>
 
-  <div class="footer-button-bar" fxLayout="row" fxLayoutAlign="end center">
-      <div >
-        <button mat-raised-button class="btn key-action-button" type="button" (click)="saveCategory()" [disabled]="!isBackOfficeButttonEnabled">
-         Save
-        </button>
-      </div>
-
-    </div>
+ <div fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button class="action-button" (click)="saveCategory()" [disabled]="!isBackOfficeButttonEnabled">Save</button>
+    <button mat-raised-button class="action-button" (click)="cancel()">Cancel</button>
+  </div>

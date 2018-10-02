@@ -1,11 +1,25 @@
-<div class="product-list-container">
+<div>
   <div fxLayout="row" fxLayoutAlign="end center">
     <button mat-raised-button class="action-button" (click)="addCategory()">Add Category</button>
     <button mat-raised-button class="action-button" (click)="addProducts()">Add Product</button>
   </div>
-  <!-- <div >
-    <p>
-      product-catalogue grid!
-    </p>
-  </div> -->
+  <div>
+    <mat-accordion>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          This is the expansion 1 title
+        </mat-expansion-panel-header>
+        This the expansion 1 content
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          This is the expansion 2 title
+        </mat-expansion-panel-header>
+        This the expansion 2 content
+      </mat-expansion-panel>
+
+    </mat-accordion>
+  </div>
 </div>

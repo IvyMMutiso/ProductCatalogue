@@ -1,3 +1,25 @@
+<h1>Product Details</h1>
 <p>
-  product-details works!
+  Product-details works!
+  Two field. Both mandatory.
+  validate product name for uniqueness
 </p>
+
+<form fxLayout="column" fxLayoutAlign="start stretch">
+  <mat-form-field fxFlex>
+    <mat-select placeholder="Product Category">
+      <mat-option></mat-option>
+      <!-- <mat-option *ngFor="let food of foods" [value]="food.value">
+            {{food.viewValue}}
+          </mat-option> -->
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field fxFlex>
+    <input matInput placeholder="Product Name" value="Sushi">
+  </mat-form-field>
+</form>
+
+<div fxLayout="row" fxLayoutAlign="end center">
+  <button mat-raised-button class="action-button" (click)="saveCategory()" [disabled]="!isBackOfficeButttonEnabled">Save</button>
+  <button mat-raised-button class="action-button" (click)="cancel()">Cancel</button>
+</div>

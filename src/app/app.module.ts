@@ -13,15 +13,17 @@ import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductsReportComponent } from './products-report/products-report.component';
 
 import {
+  MatExpansionModule,
   MatAutocompleteModule,
   MatButtonModule,
   MatCheckboxModule,
   MatFormFieldModule,
+  MatSelectModule,
+  MatOptionModule,
   MatGridListModule,
   MatInputModule,
   MatMenuModule,
   MatPaginatorModule,
-  MatSelectModule,
   MatSort,
   MatSortHeader,
   MatSortModule,
@@ -31,7 +33,6 @@ import {
   MAT_DATE_FORMATS,
   MatProgressSpinnerModule,
   MatListModule,
-  MatExpansionModule,
   MatCardModule,
   MatProgressBar,
   MatProgressBarModule
@@ -53,15 +54,21 @@ import {
     MatCardModule,
     MatToolbarModule,
     MatButtonModule,
+    MatExpansionModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   exports: [
     MatCardModule,
     MatToolbarModule,
     MatButtonModule,
+    MatExpansionModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   providers: [
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}

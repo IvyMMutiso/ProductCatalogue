@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-category-details',
   templateUrl: './category-details.component.html',
-  styleUrls: ['./category-details.component.css']
+  styleUrls: ['./category-details.component.css', '../../styles/inputs.css']
 })
 export class CategoryDetailsComponent implements OnInit {
 
