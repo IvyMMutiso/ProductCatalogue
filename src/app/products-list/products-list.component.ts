@@ -8,6 +8,7 @@ import {
   MatTableDataSource
 } from '@angular/material';
 import { ProductDetailsComponent } from '../components/product-details/product-details.component';
+import { DeleteProductComponent } from '../components/delete-product/delete-product.component';
 
 @Component({
   selector: 'app-products-list',
@@ -33,7 +34,6 @@ export class ProductsListComponent implements OnInit {
   getProducts() {
     this.catalogueService.getProducts().subscribe((data: Product[]) => {
       this.products = data;
-      console.log('this.products : ', this.products);
 
       this.dataSource = new MatTableDataSource(this.products);
     });
@@ -49,18 +49,21 @@ export class ProductsListComponent implements OnInit {
   }
 
   editProduct(element) {
-    console.log(element);
+    this.showDialog(ProductDetailsComponent, element);
+  }
+
+  deleteProduct(element) {
+    this.showDialog(DeleteProductComponent, element);
+  }
+
+  showDialog(component, product) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
     // this.dialog.open(ProductDetailsComponent, dialogConfig);
-    this.dialog.open(ProductDetailsComponent, {
-      data: element
+    this.dialog.open(component, {
+      data: product
     });
-  }
-
-  deleteProduct(element) {
-    console.log('element : ', element);
   }
 }

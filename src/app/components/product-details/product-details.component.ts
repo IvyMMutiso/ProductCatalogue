@@ -41,7 +41,6 @@ export class ProductDetailsComponent implements OnInit {
     });
     if (!!this.data) {
       this.product = this.data;
-      console.log('this.data : ', this.product.product);
       this.productsForm.get('category_id').setValue(this.product.category_id);
       this.productsForm.get('product').setValue(this.product.product);
     }
@@ -50,7 +49,6 @@ export class ProductDetailsComponent implements OnInit {
   getCategories() {
     this.catalogueService.getCategories().subscribe((categories: Category[]) => {
       this.categories = categories;
-      console.log('this.category : ', this.categories);
     });
   }
 

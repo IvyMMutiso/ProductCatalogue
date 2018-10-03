@@ -3,6 +3,7 @@ import { Category } from '../../models/category';
 import { MatTableDataSource, MatDialog, MatDialogConfig } from '@angular/material';
 import { CatalogueService } from '../../service/catalogue.service';
 import { CategoryDetailsComponent } from '../category-details/category-details.component';
+import { DeleteCategoryComponent } from '../delete-category/delete-category.component';
 
 @Component({
   selector: 'app-categories-list',
@@ -25,7 +26,6 @@ export class CategoriesListComponent implements OnInit {
   getCategories() {
     this.catalogueService.getCategories().subscribe((categories: Category[]) => {
       this.categories = categories;
-      console.log('this.categories : ', this.categories);
 
       this.dataSource = new MatTableDataSource(this.categories);
     });
@@ -37,24 +37,23 @@ export class CategoriesListComponent implements OnInit {
     dialogConfig.autoFocus = true;
 
     this.dialog.open(CategoryDetailsComponent, dialogConfig);
-
-    // this.dialog.open(ExtensionPreviewUseModeComponent, {
-    //   data: { extensionId: this.data.extensionId, allControls: this.data.allControls, extensionPreviewId: this.extensionPreviewId },
-    //   panelClass: "preview-use-mode-dialog",
-    //   disableClose: true,
-    // });
-    // this.router.navigate(['../product-details'], { relativeTo: this.route });
-
   }
 
   editCategory(element) {
-    console.log(element);
+    this.showDialog(CategoryDetailsComponent, element);
+  }
+
+  deleteCategory(element) {
+    this.showDialog(DeleteCategoryComponent, element);
+  }
+
+  showDialog(component, element) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
     // this.dialog.open(CategoryDetailsComponent, dialogConfig);
-    this.dialog.open(CategoryDetailsComponent, {
+    this.dialog.open(component, {
       data: element
     });
   }

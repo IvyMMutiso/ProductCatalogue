@@ -26,7 +26,6 @@ export class CategoryDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.initializeForm();
-    // this.getCategory();
   }
 
   initializeForm() {
@@ -38,17 +37,9 @@ export class CategoryDetailsComponent implements OnInit {
     });
     if (!!this.data) {
       this.category = this.data;
-      console.log('this.data : ', this.category);
       this.categoriesForm.get('name').setValue(this.category.name);
     }
   }
-
-  // getCategory() {
-  //   this.catalogueService.getCategoryById().subscribe((data: Category) => {
-  //     this.category = data;
-  //     console.log('this.category : ', this.category);
-  //   });
-  // }
 
   saveCategory() {
     if (this.data !== null) {
