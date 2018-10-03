@@ -3,4 +3,5 @@ export class Product {
     category: string;
     product_id: number;
     product: string;
+    active: boolean;
 }

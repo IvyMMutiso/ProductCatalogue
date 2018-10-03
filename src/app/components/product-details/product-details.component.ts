@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatDialogRef } from '@angular/material';
-import { CatalogueService } from '../service/catalogue.service';
-import { Category } from '../models/category';
-import { Product } from '../models/product';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Category } from '../../models/category';
+import { Product } from '../../models/product';
+import { CatalogueService } from '../../service/catalogue.service';
+
 
 @Component({
   selector: 'app-product-details',
@@ -21,12 +22,13 @@ export class ProductDetailsComponent implements OnInit {
     public readonly router: Router,
     public readonly route: ActivatedRoute,
     private readonly dialogRef: MatDialogRef<ProductDetailsComponent>,
-    private catalogueService: CatalogueService
+    private catalogueService: CatalogueService,
+    @Inject(MAT_DIALOG_DATA) public data: Product
   ) {}
 
   ngOnInit() {
-    this.initializeForm();
     this.getCategories();
+    this.initializeForm();
   }
 
   initializeForm() {
@@ -37,6 +39,12 @@ export class ProductDetailsComponent implements OnInit {
     this.productsForm.valueChanges.subscribe(value => {
       this.product = value;
     });
+    if (!!this.data) {
+      this.product = this.data;
+      console.log('this.data : ', this.product.product);
+      this.productsForm.get('category_id').setValue(this.product.category_id);
+      this.productsForm.get('product').setValue(this.product.product);
+    }
   }
 
   getCategories() {
@@ -47,8 +55,20 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   saveProduct() {
-    this.catalogueService.addProduct(this.product);
+    if (this.data !== null) {
+      this.product.product_id = this.data.product_id;
+      // this.product.category_id = this.data.product_id;
+      // this.product.product = this.data.product_id;
+      this.product.active = true;
+      this.catalogueService.updateProduct(this.product);
+    } else {
+      this.catalogueService.addProduct(this.product);
+    }
     this.closeDialog();
+    this.router.navigate(['../products'], { relativeTo: this.route });
+
+    // this.catalogueService.addProduct(this.product);
+    // this.closeDialog();
   }
 
   cancel() {

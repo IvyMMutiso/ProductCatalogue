@@ -61,6 +61,27 @@ app.post("/products", (req, res) => {
   });
 });
 
+//Update product
+app.put("/products", (req, res) => {
+    var product = [req.body.category_id, req.body.product, req.body.active, req.body.product_id];
+    // var product = [1, 'Water is', true, 6];
+    console.log("am here : ", product);
+    const updateCategoryQuery = "UPDATE products SET category_id = ?, name = ?, active = ? WHERE id = ?";
+    mysqlConnection.query(updateCategoryQuery, product, (err, rows, fields) => {
+      if (!err) {
+        console.log("Updated successsfully");
+  
+        res.status(201);
+        // res.json({ success: true, category_id: rows.insertId });
+      } else {
+        console.log("Update failed");
+  
+        res.status(404);
+        res.json({ success: false, error: err });
+      }
+    });
+  });
+
 //Get all categories
 app.get("/categories", (req, res) => {
   const categoriesStoredProcedure = "CALL spAllCategories()";
@@ -69,25 +90,47 @@ app.get("/categories", (req, res) => {
 
 //Add a category
 app.post("/categories", (req, res) => {
-    var category = {
-      name: req.body.name
-    };
-    console.log("am here : ", category);
-    const addCategoryQuery = "INSERT INTO categories SET ?";
-    mysqlConnection.query(addCategoryQuery, category, (err, rows, fields) => {
-      if (!err) {
-        console.log("Added successsfully");
-  
-        res.status(201);
-        res.json({ success: true, category_id: rows.insertId });
-      } else {
-        console.log("Adding failed");
-  
-        res.status(404);
-        res.json({ success: false, error: err });
-      }
-    });
+  var category = {
+    name: req.body.name
+  };
+  const addCategoryQuery = "INSERT INTO categories SET ?";
+  mysqlConnection.query(addCategoryQuery, category, (err, rows, fields) => {
+    if (!err) {
+      console.log("Added successsfully");
+
+      res.status(201);
+      res.json({ success: true, category_id: rows.insertId });
+    } else {
+      console.log("Adding failed");
+
+      res.status(404);
+      res.json({ success: false, error: err });
+    }
   });
+});
+
+//Update category
+app.put("/categories", (req, res) => {
+  var category = [req.body.name, req.body.active, req.body.id];
+
+  // var category = [3, "Detergents"];
+  console.log("am here : ", category);
+  const updateCategoryQuery =
+    "UPDATE categories SET name = ?, active = ? WHERE id = ?";
+  mysqlConnection.query(updateCategoryQuery, category, (err, rows, fields) => {
+    if (!err) {
+      console.log("Updated successsfully");
+
+      res.status(201);
+      // res.json({ success: true, category_id: rows.insertId });
+    } else {
+      console.log("Update failed");
+
+      res.status(404);
+      res.json({ success: false, error: err });
+    }
+  });
+});
 
 function executeQuery(query, res) {
   mysqlConnection.query(query, (err, rows, fields) => {

@@ -47,13 +47,16 @@ export class CategoriesListComponent implements OnInit {
 
   }
 
-  editProduct(element) {
+  editCategory(element) {
     console.log(element);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
-    this.dialog.open(CategoryDetailsComponent, dialogConfig);
+    // this.dialog.open(CategoryDetailsComponent, dialogConfig);
+    this.dialog.open(CategoryDetailsComponent, {
+      data: element
+    });
   }
 
 }

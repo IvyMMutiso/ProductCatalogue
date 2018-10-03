@@ -2,8 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CatalogueService } from '../service/catalogue.service';
 import { Product } from '../models/product';
-import { MatDialogConfig, MatDialog, MatTableDataSource } from '@angular/material';
-import { ProductDetailsComponent } from '../product-details/product-details.component';
+import {
+  MatDialogConfig,
+  MatDialog,
+  MatTableDataSource
+} from '@angular/material';
+import { ProductDetailsComponent } from '../components/product-details/product-details.component';
 
 @Component({
   selector: 'app-products-list',
@@ -11,7 +15,6 @@ import { ProductDetailsComponent } from '../product-details/product-details.comp
   styleUrls: ['./products-list.component.scss']
 })
 export class ProductsListComponent implements OnInit {
-
   products: Product[];
   displayedColumns: string[] = ['productName', 'categoryName', 'actions'];
   dataSource: MatTableDataSource<Product>;
@@ -21,7 +24,7 @@ export class ProductsListComponent implements OnInit {
     public route: ActivatedRoute,
     private catalogueService: CatalogueService,
     private dialog: MatDialog
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.getProducts();
@@ -36,18 +39,13 @@ export class ProductsListComponent implements OnInit {
     });
   }
 
-  // addCategory() {
-  //   this.router.navigate(['../category-details'], { relativeTo: this.route });
-  // }
-
   addProducts() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
     this.dialog.open(ProductDetailsComponent, dialogConfig);
-    // this.router.navigate(['../product-details'], { relativeTo: this.route });
-
+    this.router.navigate(['../products'], { relativeTo: this.route });
   }
 
   editProduct(element) {
@@ -56,6 +54,13 @@ export class ProductsListComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
-    this.dialog.open(ProductDetailsComponent, dialogConfig);
+    // this.dialog.open(ProductDetailsComponent, dialogConfig);
+    this.dialog.open(ProductDetailsComponent, {
+      data: element
+    });
+  }
+
+  deleteProduct(element) {
+    console.log('element : ', element);
   }
 }

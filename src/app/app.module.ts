@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductsReportComponent } from './products-report/products-report.component';
 import { CatalogueService } from './service/catalogue.service';
@@ -33,6 +32,9 @@ import {
 } from '@angular/material';
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 import { CategoryDetailsComponent } from './components/category-details/category-details.component';
+import { DeleteProductComponent } from './components/delete-product/delete-product.component';
+import { DeleteCategoryComponent } from './components/delete-category/delete-category.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { CategoryDetailsComponent } from './components/category-details/category
     CategoryDetailsComponent,
     ProductsListComponent,
     ProductsReportComponent,
-    CategoriesListComponent
+    CategoriesListComponent,
+    DeleteProductComponent,
+    DeleteCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +66,10 @@ import { CategoryDetailsComponent } from './components/category-details/category
     MatIconModule
   ],
   entryComponents: [
-    CategoryDetailsComponent
+    CategoryDetailsComponent,
+    ProductDetailsComponent,
+    DeleteProductComponent,
+    DeleteCategoryComponent
   ],
   providers: [
     CatalogueService,

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Category } from '../../models/category';
 import { CatalogueService } from '../../service/catalogue.service';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-category-details',
@@ -20,12 +20,13 @@ export class CategoryDetailsComponent implements OnInit {
     public readonly router: Router,
     public readonly route: ActivatedRoute,
     private catalogueService: CatalogueService,
-    private readonly dialogRef: MatDialogRef<CategoryDetailsComponent>
+    private readonly dialogRef: MatDialogRef<CategoryDetailsComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Category
   ) { }
 
   ngOnInit() {
     this.initializeForm();
-    this.getCategory();
+    // this.getCategory();
   }
 
   initializeForm() {
@@ -35,17 +36,28 @@ export class CategoryDetailsComponent implements OnInit {
     this.categoriesForm.valueChanges.subscribe(value => {
       this.category = value;
     });
+    if (!!this.data) {
+      this.category = this.data;
+      console.log('this.data : ', this.category);
+      this.categoriesForm.get('name').setValue(this.category.name);
+    }
   }
 
-  getCategory() {
-    this.catalogueService.getCategoryById().subscribe((data: Category) => {
-      this.category = data;
-      console.log('this.category : ', this.category);
-    });
-  }
+  // getCategory() {
+  //   this.catalogueService.getCategoryById().subscribe((data: Category) => {
+  //     this.category = data;
+  //     console.log('this.category : ', this.category);
+  //   });
+  // }
 
   saveCategory() {
-    this.catalogueService.addCategory(this.category);
+    if (this.data !== null) {
+      this.category.id = this.data.id;
+      this.category.active = true;
+      this.catalogueService.updateCategory(this.category);
+    } else {
+      this.catalogueService.addCategory(this.category);
+    }
     this.closeDialog();
     this.router.navigate(['../categories'], { relativeTo: this.route });
   }

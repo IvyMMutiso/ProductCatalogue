@@ -36,6 +36,18 @@ export class CatalogueService {
       ).subscribe();
   }
 
+  updateCategory(category: Category) {
+    console.log('service : ', category);
+    return this.httpClient
+      .put(`${this.LIVE_URI}/categories`, category, this.httpOptions)
+      .pipe(
+        map(res => {
+          console.log(res);
+          return res;
+        })
+      ).subscribe();
+  }
+
   getCategoryById(): Observable<Category> {
     return this.httpClient
       .get(`${this.LIVE_URI}/categories`)
@@ -51,6 +63,21 @@ export class CatalogueService {
   addProduct(product: Product) {
     return this.httpClient
       .post(`${this.LIVE_URI}/products`, product, this.httpOptions)
+      .pipe(
+        // catchError((err, caught) => {
+        //    console.log('error:', err);
+        //   }),
+        map(res => {
+          console.log(res);
+          return res;
+        })
+      ).subscribe();
+  }
+
+  updateProduct(product: Product) {
+    console.log('service : ', product);
+    return this.httpClient
+      .put(`${this.LIVE_URI}/products`, product, this.httpOptions)
       .pipe(
         // catchError((err, caught) => {
         //    console.log('error:', err);
