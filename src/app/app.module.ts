@@ -9,14 +9,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { ProductDetailsComponent } from './product-details/product-details.component';
-import { CategoryDetailsComponent } from './category-details/category-details.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductsReportComponent } from './products-report/products-report.component';
 import { CatalogueService } from './service/catalogue.service';
 
 import {
   MatToolbarModule,
-  MatExpansionModule,
   MatButtonModule,
   MatFormFieldModule,
   MatSelectModule,
@@ -34,6 +32,7 @@ import {
   MatListModule
 } from '@angular/material';
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
+import { CategoryDetailsComponent } from './components/category-details/category-details.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +53,6 @@ import { CategoriesListComponent } from './components/categories-list/categories
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatExpansionModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
@@ -62,6 +60,9 @@ import { CategoriesListComponent } from './components/categories-list/categories
     MatDialogModule,
     MatTableModule,
     MatIconModule
+  ],
+  entryComponents: [
+    CategoryDetailsComponent
   ],
   providers: [
     CatalogueService,

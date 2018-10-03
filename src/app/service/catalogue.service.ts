@@ -24,6 +24,18 @@ export class CatalogueService {
       .pipe(map((res: Category[]) => res));
   }
 
+  addCategory(category: Category) {
+    console.log('service : ', category);
+    return this.httpClient
+      .post(`${this.LIVE_URI}/categories`, category, this.httpOptions)
+      .pipe(
+        map(res => {
+          console.log(res);
+          return res;
+        })
+      ).subscribe();
+  }
+
   getCategoryById(): Observable<Category> {
     return this.httpClient
       .get(`${this.LIVE_URI}/categories`)

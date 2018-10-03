@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductsReportComponent } from './products-report/products-report.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
-import { CategoryDetailsComponent } from './category-details/category-details.component';
+import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 
 // const routes: Routes = [
 //   { path: 'products', loadChildren: './modules/products/products.module#ProductsModule' },
@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full' },
   { path: 'products',  component: ProductsListComponent },
   { path: 'product-details', component: ProductDetailsComponent },
-  { path: 'category-details',  component: CategoryDetailsComponent },
+  { path: 'categories',  component: CategoriesListComponent },
   { path: 'report',  component: ProductsReportComponent }
 ];
 

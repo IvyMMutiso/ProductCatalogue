@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Category } from '../models/category';
-import { CatalogueService } from '../service/catalogue.service';
+import { Category } from '../../models/category';
+import { CatalogueService } from '../../service/catalogue.service';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-category-details',
@@ -18,7 +19,8 @@ export class CategoryDetailsComponent implements OnInit {
     private readonly formBuilder: FormBuilder,
     public readonly router: Router,
     public readonly route: ActivatedRoute,
-    private catalogueService: CatalogueService
+    private catalogueService: CatalogueService,
+    private readonly dialogRef: MatDialogRef<CategoryDetailsComponent>
   ) { }
 
   ngOnInit() {
@@ -28,7 +30,10 @@ export class CategoryDetailsComponent implements OnInit {
 
   initializeForm() {
     this.categoriesForm = this.formBuilder.group({
-      category: ['', Validators.required]
+      name: ['', Validators.required]
+    });
+    this.categoriesForm.valueChanges.subscribe(value => {
+      this.category = value;
     });
   }
 
@@ -40,7 +45,16 @@ export class CategoryDetailsComponent implements OnInit {
   }
 
   saveCategory() {
-    this.router.navigate(['../product-details'], { relativeTo: this.route });
+    this.catalogueService.addCategory(this.category);
+    this.closeDialog();
+    this.router.navigate(['../categories'], { relativeTo: this.route });
+  }
 
+  cancel() {
+    this.closeDialog();
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
   }
 }

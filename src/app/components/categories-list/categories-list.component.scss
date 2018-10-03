@@ -1,0 +1,28 @@
+@import "../../../styles/inputs.scss";
+@import "../../../styles/buttons.scss";
+
+.mat-header-text {
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.actions-column {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.actions-column.mat-header-cell {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 40px;
+}
+
+.actions-column.mat-header-cell:last-child {
+  margin-right: 0;
+}
+
+.list-container {
+  padding-top: 8px;
+}
+

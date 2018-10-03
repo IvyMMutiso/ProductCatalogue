@@ -1,0 +1,13 @@
+ <h3>Category Details</h3>
+ <p>Product categories</p>
+
+ <form fxLayout="column" fxLayoutAlign="start stretch" [formGroup]="categoriesForm"> 
+    <mat-form-field class="input-default" fxFlex>
+      <input formControlName="name" matInput placeholder="Category Name" value="" required>
+    </mat-form-field>
+  </form>
+
+ <div fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button class="btn action-button" (click)="saveCategory()" [disabled]="categoriesForm.invalid">Save</button>
+    <button mat-raised-button class="btn action-button" (click)="cancel()">Cancel</button>
+  </div>

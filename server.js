@@ -67,6 +67,28 @@ app.get("/categories", (req, res) => {
   executeQuery(categoriesStoredProcedure, res);
 });
 
+//Add a category
+app.post("/categories", (req, res) => {
+    var category = {
+      name: req.body.name
+    };
+    console.log("am here : ", category);
+    const addCategoryQuery = "INSERT INTO categories SET ?";
+    mysqlConnection.query(addCategoryQuery, category, (err, rows, fields) => {
+      if (!err) {
+        console.log("Added successsfully");
+  
+        res.status(201);
+        res.json({ success: true, category_id: rows.insertId });
+      } else {
+        console.log("Adding failed");
+  
+        res.status(404);
+        res.json({ success: false, error: err });
+      }
+    });
+  });
+
 function executeQuery(query, res) {
   mysqlConnection.query(query, (err, rows, fields) => {
     if (!err) {
