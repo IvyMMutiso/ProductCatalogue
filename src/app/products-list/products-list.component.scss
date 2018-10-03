@@ -1,29 +1,53 @@
-.action-button {
-  margin: 8px 0 8px 8px;
-  min-width: 88px;
-  color: #ffffff;
-  background-color: #3f51b5;
-  opacity: 0.9;
-  font-family: "Segoe UI";
-  border: none;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 13px;
-  &:disabled {
-    color: rgba(0, 0, 0, 0.26);
-    background-color: rgba(0, 0, 0, 0.12);
-  }
-  .mat-ripple-element {
-    background-color: #000000;
-    opacity: 0.26;
-  }
-  &:not(:disabled):hover .mat-button-focus-overlay {
-    background-color: #000000;
-    opacity: 0.12;
-  }
+@import "../../styles/inputs.scss";
+@import "../../styles/buttons.scss";
+
+.mat-header-text {
+  text-transform: capitalize;
+  font-weight: 600;
+  font-size: 14px;
 }
 
+.actions-column {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.actions-column.mat-header-cell {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 40px;
+  // padding-left: 24px;
+}
+.actions-column.mat-header-cell:last-child {
+  margin-right: 0;
+}
+
+// .action-button {
+//   margin: 8px 0 8px 8px;
+//   min-width: 88px;
+//   color: #ffffff;
+//   background-color: #3f51b5;
+//   opacity: 0.9;
+//   font-family: "Segoe UI";
+//   border: none;
+//   text-align: center;
+//   text-decoration: none;
+//   display: inline-block;
+//   font-size: 13px;
+//   &:disabled {
+//     color: rgba(0, 0, 0, 0.26);
+//     background-color: rgba(0, 0, 0, 0.12);
+//   }
+//   .mat-ripple-element {
+//     background-color: #000000;
+//     opacity: 0.26;
+//   }
+//   &:not(:disabled):hover .mat-button-focus-overlay {
+//     background-color: #000000;
+//     opacity: 0.12;
+//   }
+// }
+
 .list-container {
-    padding-top: 8px;
+  padding-top: 8px;
 }

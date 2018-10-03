@@ -1,6 +1,6 @@
-export class Prouct {
-    id: number;
+export class Product {
+    category_id: number;
     category: string;
-    name: string;
-    active: boolean;
+    product_id: number;
+    product: string;
 }

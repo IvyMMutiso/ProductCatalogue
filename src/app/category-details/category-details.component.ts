@@ -33,7 +33,7 @@ export class CategoryDetailsComponent implements OnInit {
   }
 
   getCategory() {
-    this.catalogueService.getCategories().subscribe((data: Category) => {
+    this.catalogueService.getCategoryById().subscribe((data: Category) => {
       this.category = data;
       console.log('this.category : ', this.category);
     });

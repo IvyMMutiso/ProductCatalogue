@@ -1,4 +1,4 @@
-<h1>Product Details</h1>
+<h3>Product Details</h3>
 <p>
   Product-details works!
   Two field. Both mandatory.
@@ -7,19 +7,18 @@
 
 <form fxLayout="column" fxLayoutAlign="start stretch" [formGroup]="productsForm">
   <mat-form-field class="input-default" fxFlex>
-    <mat-select placeholder="Product Category" formControlName="category">
-      <mat-option></mat-option>
-      <!-- <mat-option *ngFor="let food of foods" [value]="food.value">
-            {{food.viewValue}}
-          </mat-option> -->
+    <mat-select placeholder="Product Category" formControlName="category_id" required>
+      <mat-option *ngFor="let category of categories" [value]="category.id">
+            {{category.name}}
+          </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field class="input-default" fxFlex>
-    <input matInput formControlName="product" placeholder="Product Name" value="Sushi">
+    <input matInput formControlName="product" placeholder="Product Name" value="" required>
   </mat-form-field>
 </form>
 
 <div fxLayout="row" fxLayoutAlign="end center">
-  <button mat-raised-button class="action-button" (click)="saveCategory()" [disabled]="!isBackOfficeButttonEnabled">Save</button>
-  <button mat-raised-button class="action-button" (click)="cancel()">Cancel</button>
+  <button mat-raised-button class="btn action-button" (click)="saveProduct()" [disabled]="productsForm.invalid">Save</button>
+  <button mat-raised-button class="btn action-button" (click)="cancel()">Cancel</button>
 </div>

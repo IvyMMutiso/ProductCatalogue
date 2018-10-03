@@ -21,6 +21,8 @@ import {
   MatFormFieldModule,
   MatSelectModule,
   MatOptionModule,
+  MatDialogModule,
+  MatIconModule,
   MatGridListModule,
   MatInputModule,
   MatMenuModule,
@@ -31,6 +33,7 @@ import {
   MatProgressSpinnerModule,
   MatListModule
 } from '@angular/material';
+import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import {
     ProductDetailsComponent,
     CategoryDetailsComponent,
     ProductsListComponent,
-    ProductsReportComponent
+    ProductsReportComponent,
+    CategoriesListComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,10 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    MatDialogModule,
+    MatTableModule,
+    MatIconModule
   ],
   providers: [
     CatalogueService,

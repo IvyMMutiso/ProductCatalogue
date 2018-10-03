@@ -1,25 +1,64 @@
 <div>
   <div fxLayout="row" fxLayoutAlign="end center">
-    <button mat-raised-button class="action-button" (click)="addCategory()">Add Category</button>
-    <button mat-raised-button class="action-button" (click)="addProducts()">Add Product</button>
+    <!-- <button mat-raised-button class="action-button" (click)="addCategory()">Add Category</button> -->
+    <button mat-raised-button class="btn action-button" (click)="addProducts()">Add Product</button>
   </div>
   <div class="list-container">
-    <mat-accordion>
 
-      <mat-expansion-panel>
+    <mat-table [dataSource]="products" class="mat-elevation-z8">
+      <!-- Product Name -->
+      <ng-container matColumnDef="productName">
+        <mat-header-cell *matHeaderCellDef class="mat-header-text">Product Name</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.product}} </mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="categoryName">
+        <mat-header-cell *matHeaderCellDef class="mat-header-text">Category Name</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.category}} </mat-cell>
+      </ng-container>
+
+      <!-- actions -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef class="mat-header-text actions-column">Actions</mat-header-cell>
+        <mat-cell *matCellDef="let element; let i=index;" class="actions-column">
+          <button mat-icon-button color="accent" (click)="editProduct(element)">
+            <mat-icon aria-label="Edit">edit</mat-icon>
+          </button>
+
+          <button mat-icon-button color="accent" (click)="deleteProduct(element)">
+            <mat-icon aria-label="Delete">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <!-- Edit Column -->
+      <!-- <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef class="mat-header-text">Edit</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-raised-button class="btn action-button" (click)="editProduct(element)">Edit</button>
+        </mat-cell>
+      </ng-container> -->
+
+      <!-- Delete Column-->
+      <!-- <ng-container matColumnDef="delete">
+        <mat-header-cell *matHeaderCellDef class="mat-header-text">Delete</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-raised-button class="btn action-button" (click)="deleteProduct(element)">Delete</button>
+        </mat-cell>
+      </ng-container> -->
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <!-- <mat-accordion>
+      <mat-expansion-panel *ngFor="let product of products">
         <mat-expansion-panel-header>
-          This is the expansion 1 title
+          {{product.category}}
         </mat-expansion-panel-header>
-        This the expansion 1 content
+        {{product.product}}
       </mat-expansion-panel>
-
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          This is the expansion 2 title
-        </mat-expansion-panel-header>
-        This the expansion 2 content
-      </mat-expansion-panel>
-
-    </mat-accordion>
+    </mat-accordion> -->
   </div>
 </div>
