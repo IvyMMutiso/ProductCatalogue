@@ -74,6 +74,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   closeDialog() {
-    this.dialogRef.close();
+    this.dialogRef.close('close');
   }
 }

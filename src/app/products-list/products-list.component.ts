@@ -9,6 +9,7 @@ import {
 } from '@angular/material';
 import { ProductDetailsComponent } from '../components/product-details/product-details.component';
 import { DeleteProductComponent } from '../components/delete-product/delete-product.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-products-list',
@@ -17,6 +18,7 @@ import { DeleteProductComponent } from '../components/delete-product/delete-prod
 })
 export class ProductsListComponent implements OnInit {
   products: Product[];
+  products$: Observable<Product[]>;
   displayedColumns: string[] = ['productName', 'categoryName', 'actions'];
   dataSource: MatTableDataSource<Product>;
 
@@ -32,11 +34,18 @@ export class ProductsListComponent implements OnInit {
   }
 
   getProducts() {
-    this.catalogueService.getProducts().subscribe((data: Product[]) => {
-      this.products = data;
-
+    this.products$ = this.catalogueService.getProducts();
+    console.log(this.products$);
+    this.products$.subscribe(cat => {
+      this.products = cat;
+      console.log(this.products);
       this.dataSource = new MatTableDataSource(this.products);
     });
+    // this.catalogueService.getProducts().subscribe((data: Product[]) => {
+    //   this.products = data;
+
+    //   this.dataSource = new MatTableDataSource(this.products);
+    // });
   }
 
   addProducts() {
@@ -61,9 +70,18 @@ export class ProductsListComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
-    // this.dialog.open(ProductDetailsComponent, dialogConfig);
-    this.dialog.open(component, {
+    const dialogRef = this.dialog.open(component, {
       data: product
     });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getProducts();
+      }
+      // this.categories = result;
+    });
+    // this.dialog.open(ProductDetailsComponent, dialogConfig);
+    // this.dialog.open(component, {
+    //   data: product
+    // });
   }
 }

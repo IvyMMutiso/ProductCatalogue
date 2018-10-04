@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Category } from '../models/category';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, skip } from 'rxjs/operators';
 import { Product } from '../models/product';
 
 @Injectable({
@@ -20,9 +20,25 @@ export class CatalogueService {
 
   getCategories(): Observable<Category[]> {
     return this.httpClient
-      .get(`${this.LIVE_URI}/categories`)
+      .get(`${this.LIVE_URI}/categories`, this.httpOptions)
       .pipe(map((res: Category[]) => res));
   }
+
+//   getCategories(): Observable<Category[]> {
+//     const result = new BehaviorSubject<Category[]>([]);
+//     this.httpClient.get<Category>(
+//         `${this.LIVE_URI}/categories`, this.httpOptions)
+//         .pipe()
+//         .subscribe((res: any) => {
+//             if (res) {
+//                 result.next(res);
+//             } else {
+//                 result.next(null);
+//             }
+//         });
+
+//     return result.asObservable().pipe(skip(1));
+// }
 
   addCategory(category: Category) {
     console.log('service : ', category);

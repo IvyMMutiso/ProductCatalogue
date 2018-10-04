@@ -4,6 +4,7 @@ import { MatTableDataSource, MatDialog, MatDialogConfig } from '@angular/materia
 import { CatalogueService } from '../../service/catalogue.service';
 import { CategoryDetailsComponent } from '../category-details/category-details.component';
 import { DeleteCategoryComponent } from '../delete-category/delete-category.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-categories-list',
@@ -13,20 +14,23 @@ import { DeleteCategoryComponent } from '../delete-category/delete-category.comp
 export class CategoriesListComponent implements OnInit {
 
   categories: Category[];
+  categories$: Observable<Category[]>;
   displayedColumns: string[] = ['categoryName', 'actions'];
   dataSource: MatTableDataSource<Category>;
 
   constructor(private catalogueService: CatalogueService,
-    private dialog: MatDialog) { }
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getCategories();
   }
 
   getCategories() {
-    this.catalogueService.getCategories().subscribe((categories: Category[]) => {
-      this.categories = categories;
-
+    this.categories$ = this.catalogueService.getCategories();
+    console.log(this.categories$);
+    this.categories$.subscribe(cat => {
+      this.categories = cat;
+      console.log(this.categories);
       this.dataSource = new MatTableDataSource(this.categories);
     });
   }
@@ -52,10 +56,15 @@ export class CategoriesListComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
-    // this.dialog.open(CategoryDetailsComponent, dialogConfig);
-    this.dialog.open(component, {
+    const dialogRef = this.dialog.open(component, {
+      width: '450px',
       data: element
     });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getCategories();
+      }
+      // this.categories = result;
+    });
   }
-
 }

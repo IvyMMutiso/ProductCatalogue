@@ -14,13 +14,14 @@ export class CategoryDetailsComponent implements OnInit {
 
   category: Category;
   categoriesForm: FormGroup;
+  categories: Category[];
 
   constructor(
     private readonly formBuilder: FormBuilder,
     public readonly router: Router,
     public readonly route: ActivatedRoute,
     private catalogueService: CatalogueService,
-    private readonly dialogRef: MatDialogRef<CategoryDetailsComponent>,
+    private dialogRef: MatDialogRef<CategoryDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Category
   ) { }
 
@@ -50,7 +51,6 @@ export class CategoryDetailsComponent implements OnInit {
       this.catalogueService.addCategory(this.category);
     }
     this.closeDialog();
-    this.router.navigate(['../categories'], { relativeTo: this.route });
   }
 
   cancel() {
@@ -58,6 +58,6 @@ export class CategoryDetailsComponent implements OnInit {
   }
 
   closeDialog() {
-    this.dialogRef.close();
+    this.dialogRef.close('close');
   }
 }
