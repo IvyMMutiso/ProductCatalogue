@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { ProductsListComponent } from './products-list/products-list.component';
-import { ProductsReportComponent } from './products-report/products-report.component';
 import { CatalogueService } from './service/catalogue.service';
 
 import {
@@ -35,6 +34,8 @@ import { CategoryDetailsComponent } from './components/category-details/category
 import { DeleteProductComponent } from './components/delete-product/delete-product.component';
 import { DeleteCategoryComponent } from './components/delete-category/delete-category.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { ProductsReportComponent } from './components/products-report/products-report.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -63,13 +64,15 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     MatOptionModule,
     MatDialogModule,
     MatTableModule,
-    MatIconModule
+    MatIconModule,
+    ChartsModule
   ],
   entryComponents: [
     CategoryDetailsComponent,
     ProductDetailsComponent,
     DeleteProductComponent,
-    DeleteCategoryComponent
+    DeleteCategoryComponent,
+    ProductsReportComponent
   ],
   providers: [
     CatalogueService,

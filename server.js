@@ -132,6 +132,12 @@ app.put("/categories", (req, res) => {
   });
 });
 
+// //Get product count per categories
+// app.get("/categories", (req, res) => {
+//     const productCountStoredProcedure = "CALL spChart()";
+//     executeQuery(productCountStoredProcedure, res);
+//   });
+
 function executeQuery(query, res) {
   mysqlConnection.query(query, (err, rows, fields) => {
     if (!err) {
