@@ -64,8 +64,8 @@ export class ProductsListComponent implements OnInit {
     dialogConfig.autoFocus = true;
 
     const dialogRef = this.dialog.open(component, {
-      width: '450px',
-      data: product
+      data: product,
+      panelClass: 'product-dialog',
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {

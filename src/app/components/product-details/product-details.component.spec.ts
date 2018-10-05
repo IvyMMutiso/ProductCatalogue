@@ -33,4 +33,10 @@ describe('ProductDetailsComponent', () => {
     component.productsForm.controls['product'].setValue('');
     expect(component.productsForm.valid).toBeFalsy();
   });
+
+  it('form should be valid', async() => {
+    component.productsForm.controls['category_id'].setValue('0');
+    component.productsForm.controls['product'].setValue('qwerty');
+    expect(component.productsForm.valid).toBeTruthy();
+  });
 });

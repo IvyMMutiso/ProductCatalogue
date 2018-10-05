@@ -28,3 +28,7 @@
 .actions-icons {
   color: $secondary-color;
 }
+
+::ng-deep .product-dialog {
+  min-width: 40%;
+}

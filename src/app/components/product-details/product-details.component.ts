@@ -44,6 +44,7 @@ export class ProductDetailsComponent implements OnInit {
     this.productsForm.controls['product'].valueChanges.subscribe(value => {
       this.duplicateProduct = false;
     });
+
     if (!!this.data) {
       this.product = this.data;
       this.productsForm.patchValue({
