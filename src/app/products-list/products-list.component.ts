@@ -41,11 +41,6 @@ export class ProductsListComponent implements OnInit {
       console.log(this.products);
       this.dataSource = new MatTableDataSource(this.products);
     });
-    // this.catalogueService.getProducts().subscribe((data: Product[]) => {
-    //   this.products = data;
-
-    //   this.dataSource = new MatTableDataSource(this.products);
-    // });
   }
 
   addProducts() {
@@ -71,17 +66,13 @@ export class ProductsListComponent implements OnInit {
     dialogConfig.autoFocus = true;
 
     const dialogRef = this.dialog.open(component, {
+      width: '450px',
       data: product
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.getProducts();
       }
-      // this.categories = result;
     });
-    // this.dialog.open(ProductDetailsComponent, dialogConfig);
-    // this.dialog.open(component, {
-    //   data: product
-    // });
   }
 }

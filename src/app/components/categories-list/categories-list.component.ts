@@ -56,15 +56,15 @@ export class CategoriesListComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
 
-    const dialogRef = this.dialog.open(component, {
+    this.dialog.open(component, {
       width: '450px',
       data: element
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
+    })
+    .afterClosed().subscribe(result => {
+      console.log('am here');
+      // if (result) {
         this.getCategories();
-      }
-      // this.categories = result;
+      // }
     });
   }
 }

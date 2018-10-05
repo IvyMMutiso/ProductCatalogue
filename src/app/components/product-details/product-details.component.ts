@@ -5,7 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Category } from '../../models/category';
 import { Product } from '../../models/product';
 import { CatalogueService } from '../../service/catalogue.service';
-
+import { AddUpdateResponse } from '../../models/addupdateresponse';
 
 @Component({
   selector: 'app-product-details',
@@ -16,6 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   productsForm: FormGroup;
   categories: Category[];
   product: Product;
+  duplicateProduct: boolean;
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -29,6 +30,7 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit() {
     this.getCategories();
     this.initializeForm();
+    this.duplicateProduct = false;
   }
 
   initializeForm() {
@@ -39,10 +41,15 @@ export class ProductDetailsComponent implements OnInit {
     this.productsForm.valueChanges.subscribe(value => {
       this.product = value;
     });
+    this.productsForm.controls['product'].valueChanges.subscribe(value => {
+      this.duplicateProduct = false;
+    });
     if (!!this.data) {
       this.product = this.data;
-      this.productsForm.get('category_id').setValue(this.product.category_id);
-      this.productsForm.get('product').setValue(this.product.product);
+      this.productsForm.patchValue({
+        'category_id': this.product.category_id,
+        'product': this.product.product
+      });
     }
   }
 
@@ -55,18 +62,31 @@ export class ProductDetailsComponent implements OnInit {
   saveProduct() {
     if (this.data !== null) {
       this.product.product_id = this.data.product_id;
-      // this.product.category_id = this.data.product_id;
-      // this.product.product = this.data.product_id;
       this.product.active = true;
-      this.catalogueService.updateProduct(this.product);
+      this.updateProduct();
     } else {
-      this.catalogueService.addProduct(this.product);
+      this.createProduct();
     }
-    this.closeDialog();
-    this.router.navigate(['../products'], { relativeTo: this.route });
+  }
 
-    // this.catalogueService.addProduct(this.product);
-    // this.closeDialog();
+  updateProduct() {
+    this.catalogueService.updateProduct(this.product).subscribe((response: AddUpdateResponse) => {
+      if (response.success) {
+        this.closeDialog();
+      } else {
+        this.duplicateProduct = true;
+      }
+    });
+  }
+
+  createProduct() {
+    this.catalogueService.addProduct(this.product).subscribe((response: AddUpdateResponse) => {
+      if (response.success) {
+        this.closeDialog();
+      } else {
+        this.duplicateProduct = true;
+      }
+    });
   }
 
   cancel() {
@@ -75,5 +95,13 @@ export class ProductDetailsComponent implements OnInit {
 
   closeDialog() {
     this.dialogRef.close('close');
+  }
+
+  getCategoryErrorMessage() {
+    return this.productsForm.get('category_id').hasError('required') ? 'You must select a category' : '';
+  }
+
+  getProductErrorMessage() {
+    return this.productsForm.get('product').hasError('required') ? 'Product name is required' : '';
   }
 }

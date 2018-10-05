@@ -31,8 +31,6 @@ mysqlConnection.connect(err => {
   }
 });
 
-app.listen(3000, () => console.log("Express server running at port 3000"));
-
 //Get all products
 app.get("/products", (req, res) => {
   const productsStoredProcedure = `CALL spProducts()`;
@@ -62,19 +60,36 @@ app.post("/products", (req, res) => {
 });
 
 //Update product
-app.put("/products", (req, res) => {
+app.patch("/products", (req, res) => {
     var product = [req.body.category_id, req.body.product, req.body.active, req.body.product_id];
-    // var product = [1, 'Water is', true, 6];
     console.log("am here : ", product);
-    const updateCategoryQuery = "UPDATE products SET category_id = ?, name = ?, active = ? WHERE id = ?";
-    mysqlConnection.query(updateCategoryQuery, product, (err, rows, fields) => {
+    const updateProductQuery = "UPDATE products SET category_id = ?, name = ?, active = ? WHERE id = ?";
+    mysqlConnection.query(updateProductQuery, product, (err, rows, fields) => {
       if (!err) {
         console.log("Updated successsfully");
+        res.json({ success: true});
+        // res.json({ success: true, category_id: rows.insertId });
+      } else {
+        console.log("Update failed");
+        res.json({ success: false, error: err });
+      }
+    });
+  });
+
+  //delete product
+  app.delete("/products", (req, res) => {
+    var product = [req.body.product_id];
+    // var product = [1, 'Water is', true, 6];
+    console.log("am here : ", product);
+    const deleteProductQuery = "DELETE FROM products WHERE id = ?";
+    mysqlConnection.query(deleteProductQuery, product, (err, rows, fields) => {
+      if (!err) {
+        console.log("Deleteed successsfully");
   
         res.status(201);
         // res.json({ success: true, category_id: rows.insertId });
       } else {
-        console.log("Update failed");
+        console.log("Delete failed");
   
         res.status(404);
         res.json({ success: false, error: err });
@@ -98,45 +113,34 @@ app.post("/categories", (req, res) => {
     if (!err) {
       console.log("Added successsfully");
 
-      res.status(201);
+      // res.status(201);
       res.json({ success: true, category_id: rows.insertId });
     } else {
       console.log("Adding failed");
 
-      res.status(404);
+      // res.status(404);
       res.json({ success: false, error: err });
     }
   });
 });
 
 //Update category
-app.put("/categories", (req, res) => {
+app.patch("/categories", (req, res) => {
   var category = [req.body.name, req.body.active, req.body.id];
-
-  // var category = [3, "Detergents"];
   console.log("am here : ", category);
-  const updateCategoryQuery =
-    "UPDATE categories SET name = ?, active = ? WHERE id = ?";
+  const updateCategoryQuery = "UPDATE categories SET name = ?, active = ? WHERE id = ?";
   mysqlConnection.query(updateCategoryQuery, category, (err, rows, fields) => {
     if (!err) {
       console.log("Updated successsfully");
-
-      res.status(201);
+      res.json({ success: true});
       // res.json({ success: true, category_id: rows.insertId });
     } else {
       console.log("Update failed");
-
-      res.status(404);
+      // res.json({ success: false });
       res.json({ success: false, error: err });
     }
   });
 });
-
-// //Get product count per categories
-// app.get("/categories", (req, res) => {
-//     const productCountStoredProcedure = "CALL spChart()";
-//     executeQuery(productCountStoredProcedure, res);
-//   });
 
 function executeQuery(query, res) {
   mysqlConnection.query(query, (err, rows, fields) => {
@@ -148,3 +152,5 @@ function executeQuery(query, res) {
     }
   });
 }
+
+app.listen(3000, () => console.log("Express server running at port 3000"));

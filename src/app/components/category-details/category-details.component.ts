@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Category } from '../../models/category';
 import { CatalogueService } from '../../service/catalogue.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { ClientResponse } from 'http';
+import { AddUpdateResponse } from '../../models/addupdateresponse';
 
 @Component({
   selector: 'app-category-details',
@@ -15,6 +17,7 @@ export class CategoryDetailsComponent implements OnInit {
   category: Category;
   categoriesForm: FormGroup;
   categories: Category[];
+  duplicateCategory: boolean;
 
   constructor(
     private readonly formBuilder: FormBuilder,
@@ -35,6 +38,7 @@ export class CategoryDetailsComponent implements OnInit {
     });
     this.categoriesForm.valueChanges.subscribe(value => {
       this.category = value;
+      this.duplicateCategory = false;
     });
     if (!!this.data) {
       this.category = this.data;
@@ -46,11 +50,30 @@ export class CategoryDetailsComponent implements OnInit {
     if (this.data !== null) {
       this.category.id = this.data.id;
       this.category.active = true;
-      this.catalogueService.updateCategory(this.category);
+      this.updateCategory();
     } else {
-      this.catalogueService.addCategory(this.category);
+      this.createCategory();
     }
-    this.closeDialog();
+  }
+
+  updateCategory() {
+    this.catalogueService.updateCategory(this.category).subscribe((response: AddUpdateResponse) => {
+      if (response.success) {
+        this.closeDialog();
+      } else {
+        this.duplicateCategory = true;
+      }
+    });
+  }
+
+  createCategory() {
+    this.catalogueService.addCategory(this.category).subscribe((response: AddUpdateResponse) => {
+      if (response.success) {
+        this.closeDialog();
+      } else {
+        this.duplicateCategory = true;
+      }
+    });
   }
 
   cancel() {
@@ -59,5 +82,9 @@ export class CategoryDetailsComponent implements OnInit {
 
   closeDialog() {
     this.dialogRef.close('close');
+  }
+
+  getCategoryErrorMessage() {
+    return this.categoriesForm.get('name').hasError('required') ? 'Category name is required' : '';
   }
 }

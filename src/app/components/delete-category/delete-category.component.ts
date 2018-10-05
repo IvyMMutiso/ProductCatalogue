@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { CatalogueService } from '../../service/catalogue.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Category } from '../../models/category';
+import { AddUpdateResponse } from '../../models/addupdateresponse';
 
 @Component({
   selector: 'app-delete-category',
@@ -24,8 +25,9 @@ export class DeleteCategoryComponent implements OnInit {
 
   deleteCategory() {
     this.category.active = false;
-    this.catalogueService.updateCategory(this.category);
-    this.closeDialog();
+    this.catalogueService.updateCategory(this.category).subscribe((response: AddUpdateResponse) => {
+      this.closeDialog();
+    });
   }
 
   cancel() {
@@ -33,7 +35,7 @@ export class DeleteCategoryComponent implements OnInit {
   }
 
   closeDialog() {
-    this.dialogRef.close();
+    this.dialogRef.close('close');
   }
 
 }

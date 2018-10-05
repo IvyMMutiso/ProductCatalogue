@@ -1,6 +1,5 @@
 <div>
   <div fxLayout="row" fxLayoutAlign="end center">
-    <!-- <button mat-raised-button class="action-button" (click)="addCategory()">Add Category</button> -->
     <button mat-raised-button class="btn action-button" (click)="addProducts()">Add Product</button>
   </div>
   <div class="list-container">
@@ -12,7 +11,7 @@
         <mat-cell *matCellDef="let element"> {{element.product}} </mat-cell>
       </ng-container>
 
-      <!-- Name Column -->
+      <!-- Category Column -->
       <ng-container matColumnDef="categoryName">
         <mat-header-cell *matHeaderCellDef class="mat-header-text">Category Name</mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.category}} </mat-cell>
@@ -32,33 +31,8 @@
         </mat-cell>
       </ng-container>
 
-      <!-- Edit Column -->
-      <!-- <ng-container matColumnDef="edit">
-        <mat-header-cell *matHeaderCellDef class="mat-header-text">Edit</mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <button mat-raised-button class="btn action-button" (click)="editProduct(element)">Edit</button>
-        </mat-cell>
-      </ng-container> -->
-
-      <!-- Delete Column-->
-      <!-- <ng-container matColumnDef="delete">
-        <mat-header-cell *matHeaderCellDef class="mat-header-text">Delete</mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <button mat-raised-button class="btn action-button" (click)="deleteProduct(element)">Delete</button>
-        </mat-cell>
-      </ng-container> -->
-
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
-
-    <!-- <mat-accordion>
-      <mat-expansion-panel *ngFor="let product of products">
-        <mat-expansion-panel-header>
-          {{product.category}}
-        </mat-expansion-panel-header>
-        {{product.product}}
-      </mat-expansion-panel>
-    </mat-accordion> -->
   </div>
 </div>

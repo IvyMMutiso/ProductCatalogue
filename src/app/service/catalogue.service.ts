@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Category } from '../models/category';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { map, catchError, skip } from 'rxjs/operators';
+import { map, skip} from 'rxjs/operators';
 import { Product } from '../models/product';
+import { AddUpdateResponse } from '../models/addupdateresponse';
 
 @Injectable({
   providedIn: 'root'
@@ -24,44 +25,18 @@ export class CatalogueService {
       .pipe(map((res: Category[]) => res));
   }
 
-//   getCategories(): Observable<Category[]> {
-//     const result = new BehaviorSubject<Category[]>([]);
-//     this.httpClient.get<Category>(
-//         `${this.LIVE_URI}/categories`, this.httpOptions)
-//         .pipe()
-//         .subscribe((res: any) => {
-//             if (res) {
-//                 result.next(res);
-//             } else {
-//                 result.next(null);
-//             }
-//         });
-
-//     return result.asObservable().pipe(skip(1));
-// }
-
-  addCategory(category: Category) {
+  addCategory(category: Category): Observable<AddUpdateResponse> {
     console.log('service : ', category);
     return this.httpClient
       .post(`${this.LIVE_URI}/categories`, category, this.httpOptions)
-      .pipe(
-        map(res => {
-          console.log(res);
-          return res;
-        })
-      ).subscribe();
+      .pipe(map((res: AddUpdateResponse) =>  res));
   }
 
-  updateCategory(category: Category) {
+  updateCategory(category: Category): Observable<AddUpdateResponse> {
     console.log('service : ', category);
     return this.httpClient
-      .put(`${this.LIVE_URI}/categories`, category, this.httpOptions)
-      .pipe(
-        map(res => {
-          console.log(res);
-          return res;
-        })
-      ).subscribe();
+      .patch(`${this.LIVE_URI}/categories`, category, this.httpOptions)
+      .pipe(map((res: AddUpdateResponse) =>  res ));
   }
 
   getCategoryById(): Observable<Category> {
@@ -76,54 +51,22 @@ export class CatalogueService {
       .pipe(map((res: Product[]) => res));
   }
 
-  addProduct(product: Product) {
+  addProduct(product: Product): Observable<AddUpdateResponse> {
     return this.httpClient
       .post(`${this.LIVE_URI}/products`, product, this.httpOptions)
-      .pipe(
-        // catchError((err, caught) => {
-        //    console.log('error:', err);
-        //   }),
-        map(res => {
-          console.log(res);
-          return res;
-        })
-      ).subscribe();
+      .pipe(map((res: AddUpdateResponse) => res));
+      // .subscribe();
   }
 
-  updateProduct(product: Product) {
-    console.log('service : ', product);
+  updateProduct(product: Product): Observable<AddUpdateResponse> {
     return this.httpClient
-      .put(`${this.LIVE_URI}/products`, product, this.httpOptions)
-      .pipe(
-        // catchError((err, caught) => {
-        //    console.log('error:', err);
-        //   }),
-        map(res => {
-          console.log(res);
-          return res;
-        })
-      ).subscribe();
+      .patch(`${this.LIVE_URI}/products`, product, this.httpOptions)
+      .pipe(map((res: AddUpdateResponse) => res));
   }
-
-  //   getCategories(): Observable<Category[]> {
-  //     const result = new BehaviorSubject<Category[]>([new Category()]);
-  //     this.httpClient.get<Category[]>(
-  //         `${this.LIVE_URI}/categories`)
-  //         .pipe()
-  //         .subscribe((entityResponse: Category[]) => {
-  //             result.next(entityResponse);
-  //         });
-
-  //     return result.asObservable().pipe();
-  // }
 
   getCategoriesById() {
     return this.httpClient.get(`${this.LIVE_URI}/categories`);
   }
-
-  // getProducts() {
-  //   return this.httpClient.get(`${this.LIVE_URI}/products`);
-  // }
 
   getProductById() {
     return this.httpClient.get(`${this.LIVE_URI}/products`);
