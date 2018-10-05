@@ -1,25 +1,8 @@
 @import 'theme-defaults.scss';
-::ng-deep .input-with-icon, // in-popup elements
-:host ::ng-deep .input-with-icon {
-    flex: 1 1 100%;
-    flex-direction: row;
-    display: flex;
-    mat-form-field {
-        margin-left: 8px;
-        flex: 1 1 100%;
-    }
-    mat-icon {
-        color: $standard-label-color;
-        &.disabled {
-            color: rgba(#000000, 0.15);
-        }
-        margin-top: 40px;
-    }
-}
 
-::ng-deep mat-form-field.input-default, // in-popup elements
+::ng-deep mat-form-field.input-default, 
 :host ::ng-deep mat-form-field.input-default {
-    padding-top: 24px;
+    padding-top: 16px;
     font-size: 16px;
     input {
         line-height: 16px;
@@ -33,10 +16,6 @@
             padding-bottom: 8px;
         }
     }
-    mat-hint.mat-hint {
-        font-weight: normal;
-        line-height: 16px;
-    }
     mat-error.mat-error {
         font-weight: normal;
         line-height: 16px;
@@ -49,95 +28,16 @@
         transform: none;
         transition: none;
     }
-    .mat-form-field-suffix {
-        .mat-icon-button {
-            float: right;
-        }
-        mat-icon.mat-icon {
-            font-size: 24px;
-        }
-        .mat-datepicker-toggle-default-icon {
-            font-size: 24px;
-        }
-    }
     .mat-form-field-infix {
         padding-top: 0;
         padding-bottom: 0
-    } // Disabled //
-    &.mat-form-field-disabled {
-        .mat-form-field-underline {
-            border-bottom: 1px dashed;
-            border-bottom-color: $disabled-color;
-            background-image: none;
-            background-size: 0;
-            background-repeat: no-repeat;
-            background-color: transparent;
-            opacity: $disabled-opacity;
-        }
-        .mat-input-element:disabled {
-            color: $disabled-color;
-            opacity: $disabled-opacity
-        }
-        &:not(.mat-form-field-should-float) {
-            .mat-form-field-label {
-                color: $disabled-color;
-                opacity: $disabled-opacity;
-            }
-        }
-        &.mat-form-field-should-float {
-            .mat-form-field-label {
-                color: $disabled-color;
-                opacity: $disabled-opacity;
-            }
-        }
-        mat-hint.mat-hint {
-            color: $disabled-color;
-            opacity: $disabled-opacity
-        }
-        .mat-form-field-suffix {
-            color: $disabled-color;
-            opacity: $disabled-opacity;
-        }
-        .mat-select-arrow {
-            border-top-color: $disabled-color;
-            color: $disabled-color;
-            opacity: $disabled-opacity;
-        }
-    } // Inert
+    }  // Inert
     .mat-form-field-underline {
         background-color: $placeholder-color; 
-    }
-    mat-hint.mat-hint {
-        color: $help-text-color;
-        opacity: 1
     }
     .mat-input-element {
         color: $input-value-color;
         opacity: 1
-    }
-    &.mat-form-field-should-float .mat-form-field-label {
-        color: $help-text-color;
-        opacity: 1;
-        font-weight: normal;
-        line-height: 16px;
-        padding-bottom: 8px;
-    }
-    &:not(.mat-form-field-should-float) .mat-form-field-label {
-        color: $standard-label-color;
-        opacity: 1;
-        line-height: 16px;
-        padding-bottom: 8px;
-    }
-    .mat-form-field-suffix {
-        color: $placeholder-color;
-    }
-    .mat-form-field-required-marker {
-        color: $standard-label-color;
-        opacity: 1
-    }
-    .mat-select-arrow {
-        border-top-color: $placeholder-color;
-        color: $placeholder-color
     } // Hover //
     &:hover {
         &:not(.mat-focused):not(.mat-form-field-invalid):not(.mat-form-field-disabled) .mat-form-field-underline {
@@ -145,40 +45,12 @@
             opacity: 1;
             height: 2px;
         }
-        &.mat-form-field-should-float:not(.mat-focused):not(.mat-form-field-disabled):not(.mat-form-field-invalid) .mat-form-field-label {
-            color: $standard-label-color;
-            opacity: 1
-        }
-        .mat-form-field-suffix {
-            color: $input-value-color;
-        }
-        .mat-select-arrow {
-            border-top-color: $input-value-color;
-            color: $input-value-color
-        }
     } // Focus //
     &.mat-focused {
         .mat-form-field-underline {
-            background-color: $primary-color;
+            background-color: $secondary-color;
             opacity: 1;
             height: 2px;
-        }
-        &.mat-form-field-should-float {
-            .mat-form-field-label {
-                color: $primary-color;
-                opacity: 1
-            }
-            .mat-form-field-required-marker {
-                color: $primary-color;
-                opacity: 1
-            }
-        }
-        .mat-form-field-suffix {
-            color: $primary-color;
-        }
-        .mat-select-arrow {
-            border-top-color: $primary-color;
-            color: $primary-color
         }
     } // Error //
     &.mat-form-field-invalid {
@@ -189,10 +61,6 @@
         }
         &.mat-form-field-should-float {
             .mat-form-field-label {
-                color: $error-color;
-                opacity: 1
-            }
-            .mat-form-field-required-marker {
                 color: $error-color;
                 opacity: 1
             }
@@ -208,12 +76,6 @@
         .mat-error {
             color: $error-color;
             opacity: 1
-        }
-        .mat-form-field-suffix {
-            color: $error-color;
-        }
-        .mat-datepicker-toggle-active {
-            color: $error-color;
         }
         .mat-select-arrow {
             border-top-color: $error-color;

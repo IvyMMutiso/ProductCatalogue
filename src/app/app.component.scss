@@ -1,13 +1,6 @@
 @import "../styles/inputs.scss";
 @import "../styles/buttons.scss";
 
-.header-text {
-  color: white;
-  float: left;
-  font-size: 20px;
-  font-family: "Segoe UI";
-}
-
 .container {
   width: 80%;
   margin-left: auto;
@@ -15,24 +8,19 @@
 }
 
 .toolbar-button {
-    // margin: 8px 0 8px 8px;
   min-width: 88px;
   color: #ffffff;
-  // background-color: #3f51b5;
   opacity: 0.9;
-  font-family: "Segoe UI";
   border: none;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 15px;
-  font-weight: 600;
   &:active {
     color: rgba(0, 0, 0, 0.26);
     background-color: rgba(0, 0, 0, 0.12);
   }
   &:focus {
-    color:#3f51b5;
+    color:$secondary-color;
     background-color:white;
   }
 }

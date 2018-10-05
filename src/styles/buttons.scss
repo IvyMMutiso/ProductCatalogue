@@ -8,7 +8,7 @@
     margin-right: 8px;
 }
 
-::ng-deep body .btn, // support for in-popup buttons
+::ng-deep body .btn, 
 :host ::ng-deep body .btn {
     text-transform: uppercase;
     min-width: 88px;
@@ -34,37 +34,6 @@
         &:disabled {
             color: rgba(0, 0, 0, 0.26);
             background-color: rgba(0, 0, 0, 0.12)
-        }
-    }
-    &.key-action-button {
-        color: #ffffff;
-        background-color: $primary-color;
-        &:disabled {
-            color: rgba(0, 0, 0, 0.26);
-            background-color: rgba(0, 0, 0, 0.12)
-        }
-        .mat-ripple-element {
-            background-color: #000000;
-            opacity: 0.26;
-        }
-        &:not(:disabled):hover .mat-button-focus-overlay {
-            background-color: #000000;
-            opacity: 0.12;
-        }
-    }
-    &.exit-button {
-        color: #46B4C1;
-        &:disabled {
-            color: rgba(0, 0, 0, 0.26);
-            background-color: #ffffff
-        }
-        .mat-ripple-element {
-            background-color: #46B4C1;
-            opacity: 0.26;
-        }
-        &:not(:disabled):hover .mat-button-focus-overlay {
-            background-color: #46B4C1;
-            opacity: 0.12;
         }
     }
 }
