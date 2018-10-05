@@ -51,7 +51,17 @@
             background-color: $secondary-color;
             opacity: 1;
             height: 2px;
+        }&.mat-form-field-should-float {
+            .mat-form-field-label {
+                color: $primary-color;
+                opacity: 1
+            }
         }
+        .mat-select-arrow {
+            border-top-color: $primary-color;
+            color: $primary-color
+        }
+        
     } // Error //
     &.mat-form-field-invalid {
         .mat-form-field-underline {
@@ -59,27 +69,13 @@
             opacity: 1;
             height: 2px;
         }
-        &.mat-form-field-should-float {
-            .mat-form-field-label {
-                color: $error-color;
-                opacity: 1
-            }
-        }
         .mat-form-field-label {
-            color: $error-color;
-            opacity: 1
-        }
-        .mat-form-field-required-marker {
             color: $error-color;
             opacity: 1
         }
         .mat-error {
             color: $error-color;
             opacity: 1
-        }
-        .mat-select-arrow {
-            border-top-color: $error-color;
-            color: $error-color
         }
     }
 }

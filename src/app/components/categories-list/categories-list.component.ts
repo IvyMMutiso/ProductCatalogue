@@ -27,10 +27,8 @@ export class CategoriesListComponent implements OnInit {
 
   getCategories() {
     this.categories$ = this.catalogueService.getCategories();
-    console.log(this.categories$);
-    this.categories$.subscribe(cat => {
-      this.categories = cat;
-      console.log(this.categories);
+    this.categories$.subscribe(categories => {
+      this.categories = categories;
       this.dataSource = new MatTableDataSource(this.categories);
     });
   }

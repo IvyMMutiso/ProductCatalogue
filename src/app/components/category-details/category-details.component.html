@@ -3,7 +3,7 @@
 
  <form fxLayout="column" fxLayoutAlign="start stretch" [formGroup]="categoriesForm"> 
     <mat-form-field class="input-default" fxFlex>
-      <input formControlName="name" matInput placeholder="Category Name" required>
+      <input formControlName="name" matInput placeholder="Category Name">
       <mat-error *ngIf="categoriesForm.get('name').hasError('required')">{{getCategoryErrorMessage()}}</mat-error>
     </mat-form-field>
   </form>

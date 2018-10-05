@@ -10,7 +10,7 @@
     <mat-error *ngIf="productsForm.get('category_id').hasError('required')">{{getCategoryErrorMessage()}}</mat-error>
   </mat-form-field>
   <mat-form-field class="input-default" fxFlex>
-    <input matInput formControlName="product" placeholder="Product Name" required>
+    <input matInput formControlName="product" placeholder="Product Name">
     <mat-error *ngIf="productsForm.get('product').hasError('required')">{{getProductErrorMessage()}}</mat-error>
   </mat-form-field>
 </form>

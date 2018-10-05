@@ -1,6 +1,11 @@
 @import "../styles/inputs.scss";
 @import "../styles/buttons.scss";
 
+.toolbar{
+  background-color: $primary-color;;
+  color: #ffffff;
+}
+
 .container {
   width: 80%;
   margin-left: auto;

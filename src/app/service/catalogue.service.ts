@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Category } from '../models/category';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { map, skip} from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map} from 'rxjs/operators';
 import { Product } from '../models/product';
 import { AddUpdateResponse } from '../models/addupdateresponse';
 
@@ -55,7 +55,6 @@ export class CatalogueService {
     return this.httpClient
       .post(`${this.LIVE_URI}/products`, product, this.httpOptions)
       .pipe(map((res: AddUpdateResponse) => res));
-      // .subscribe();
   }
 
   updateProduct(product: Product): Observable<AddUpdateResponse> {

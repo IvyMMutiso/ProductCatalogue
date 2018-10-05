@@ -44,16 +44,14 @@ app.post("/products", (req, res) => {
     name: req.body.product
   };
   const addProductQuery = "INSERT INTO products SET ?";
-  mysqlConnection.query(addProductQuery, product, (err, rows, fields) => {
+  mysqlConnection.query(addProductQuery, product, (err, rows) => {
     if (!err) {
       console.log("Added successsfully");
-
-      res.status(201);
+      // res.status(201);
       res.json({ success: true, product_id: rows.insertId });
     } else {
       console.log("Adding failed");
-
-      res.status(404);
+      // res.status(404);
       res.json({ success: false, error: err });
     }
   });
@@ -112,12 +110,10 @@ app.post("/categories", (req, res) => {
   mysqlConnection.query(addCategoryQuery, category, (err, rows, fields) => {
     if (!err) {
       console.log("Added successsfully");
-
       // res.status(201);
       res.json({ success: true, category_id: rows.insertId });
     } else {
       console.log("Adding failed");
-
       // res.status(404);
       res.json({ success: false, error: err });
     }
@@ -146,7 +142,6 @@ function executeQuery(query, res) {
   mysqlConnection.query(query, (err, rows, fields) => {
     if (!err) {
       res.send(JSON.stringify(rows[0]));
-      // console.log(rows);
     } else {
       console.log(err);
     }

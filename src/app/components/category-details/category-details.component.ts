@@ -4,7 +4,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Category } from '../../models/category';
 import { CatalogueService } from '../../service/catalogue.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { ClientResponse } from 'http';
 import { AddUpdateResponse } from '../../models/addupdateresponse';
 
 @Component({

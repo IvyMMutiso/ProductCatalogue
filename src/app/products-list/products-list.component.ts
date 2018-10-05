@@ -35,10 +35,8 @@ export class ProductsListComponent implements OnInit {
 
   getProducts() {
     this.products$ = this.catalogueService.getProducts();
-    console.log(this.products$);
-    this.products$.subscribe(cat => {
-      this.products = cat;
-      console.log(this.products);
+    this.products$.subscribe(products => {
+      this.products = products;
       this.dataSource = new MatTableDataSource(this.products);
     });
   }

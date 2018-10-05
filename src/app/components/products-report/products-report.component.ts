@@ -22,15 +22,6 @@ export class ProductsReportComponent implements OnInit {
     this.fetchProducts();
   }
 
-  // events
-  public chartClicked(e: any): void {
-    console.log(e);
-  }
-
-  public chartHovered(e: any): void {
-    console.log(e);
-  }
-
   fetchProducts() {
     this.catalogueService.getProducts().subscribe((products: Product[]) => {
       this.products = products;
