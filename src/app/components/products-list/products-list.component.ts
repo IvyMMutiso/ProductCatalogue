@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CatalogueService } from '../service/catalogue.service';
-import { Product } from '../models/product';
 import {
   MatDialogConfig,
   MatDialog,
   MatTableDataSource
 } from '@angular/material';
-import { ProductDetailsComponent } from '../components/product-details/product-details.component';
-import { DeleteProductComponent } from '../components/delete-product/delete-product.component';
 import { Observable } from 'rxjs';
+import { Product } from '../../models/product';
+import { CatalogueService } from '../../service/catalogue.service';
+import { ProductDetailsComponent } from '../product-details/product-details.component';
+import { DeleteProductComponent } from '../delete-product/delete-product.component';
 
 @Component({
   selector: 'app-products-list',

@@ -1,10 +1,10 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 import { CategoryDetailsComponent } from './components/category-details/category-details.component';
 import { ProductsReportComponent } from './components/products-report/products-report.component';
+import { ProductsListComponent } from './components/products-list/products-list.component';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({

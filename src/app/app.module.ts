@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
-import { ProductsListComponent } from './products-list/products-list.component';
 import { CatalogueService } from './service/catalogue.service';
 
 import {
@@ -19,15 +18,8 @@ import {
   MatOptionModule,
   MatDialogModule,
   MatIconModule,
-  MatGridListModule,
   MatInputModule,
-  MatMenuModule,
-  MatSort,
-  MatSortHeader,
-  MatSortModule,
-  MatTableModule,
-  MatProgressSpinnerModule,
-  MatListModule
+  MatTableModule
 } from '@angular/material';
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 import { CategoryDetailsComponent } from './components/category-details/category-details.component';
@@ -36,6 +28,7 @@ import { DeleteCategoryComponent } from './components/delete-category/delete-cat
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductsReportComponent } from './components/products-report/products-report.component';
 import { ChartsModule } from 'ng2-charts';
+import { ProductsListComponent } from './components/products-list/products-list.component';
 
 @NgModule({
   declarations: [
