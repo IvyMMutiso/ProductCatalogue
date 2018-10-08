@@ -37,8 +37,12 @@ export class CategoriesListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    dialogConfig.minWidth = '450px';
 
-    this.dialog.open(CategoryDetailsComponent, dialogConfig);
+    this.dialog.open(CategoryDetailsComponent, dialogConfig)
+    .afterClosed().subscribe(result => {
+        this.getCategories();
+    });
   }
 
   editCategory(element) {
@@ -59,10 +63,7 @@ export class CategoriesListComponent implements OnInit {
       data: element
     })
     .afterClosed().subscribe(result => {
-      console.log('am here');
-      // if (result) {
         this.getCategories();
-      // }
     });
   }
 }

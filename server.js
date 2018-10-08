@@ -38,7 +38,7 @@ app.get("/products", (req, res) => {
 });
 
 //Add a product
-app.post("/products", (req, res) => {
+app.put("/products", (req, res) => {
   var product = {
     category_id: req.body.category_id,
     name: req.body.product
@@ -60,7 +60,6 @@ app.post("/products", (req, res) => {
 //Update product
 app.patch("/products", (req, res) => {
     var product = [req.body.category_id, req.body.product, req.body.active, req.body.product_id];
-    console.log("am here : ", product);
     const updateProductQuery = "UPDATE products SET category_id = ?, name = ?, active = ? WHERE id = ?";
     mysqlConnection.query(updateProductQuery, product, (err, rows, fields) => {
       if (!err) {
@@ -77,8 +76,6 @@ app.patch("/products", (req, res) => {
   //delete product
   app.delete("/products", (req, res) => {
     var product = [req.body.product_id];
-    // var product = [1, 'Water is', true, 6];
-    console.log("am here : ", product);
     const deleteProductQuery = "DELETE FROM products WHERE id = ?";
     mysqlConnection.query(deleteProductQuery, product, (err, rows, fields) => {
       if (!err) {
@@ -102,15 +99,16 @@ app.get("/categories", (req, res) => {
 });
 
 //Add a category
-app.post("/categories", (req, res) => {
+app.put("/categories", (req, res) => {
   var category = {
     name: req.body.name
   };
   const addCategoryQuery = "INSERT INTO categories SET ?";
-  mysqlConnection.query(addCategoryQuery, category, (err, rows, fields) => {
+  mysqlConnection.query(addCategoryQuery, category, (err, rows) => {
     if (!err) {
       console.log("Added successsfully");
       // res.status(201);
+      // res.json({ success: true, category_id: rows.insertId });
       res.json({ success: true, category_id: rows.insertId });
     } else {
       console.log("Adding failed");
@@ -123,7 +121,6 @@ app.post("/categories", (req, res) => {
 //Update category
 app.patch("/categories", (req, res) => {
   var category = [req.body.name, req.body.active, req.body.id];
-  console.log("am here : ", category);
   const updateCategoryQuery = "UPDATE categories SET name = ?, active = ? WHERE id = ?";
   mysqlConnection.query(updateCategoryQuery, category, (err, rows, fields) => {
     if (!err) {

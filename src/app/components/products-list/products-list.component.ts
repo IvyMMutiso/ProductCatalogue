@@ -45,9 +45,12 @@ export class ProductsListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    dialogConfig.minWidth = '450px';
 
-    this.dialog.open(ProductDetailsComponent, dialogConfig);
-    this.router.navigate(['../products'], { relativeTo: this.route });
+    this.dialog.open(ProductDetailsComponent, dialogConfig)
+    .afterClosed().subscribe(result => {
+        this.getProducts();
+    });
   }
 
   editProduct(element) {
