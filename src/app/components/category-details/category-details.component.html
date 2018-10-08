@@ -1,15 +1,15 @@
- <h3>Category Details</h3>
- <p>Product categories</p>
+<h3>Category Details</h3>
+<p>Product categories</p>
 
- <form fxLayout="column" fxLayoutAlign="start stretch" [formGroup]="categoriesForm"> 
-    <mat-form-field class="input-default" fxFlex>
-      <input formControlName="name" matInput placeholder="Category Name">
-      <mat-error *ngIf="categoriesForm.get('name').hasError('required')">{{getCategoryErrorMessage()}}</mat-error>
-    </mat-form-field>
-  </form>
-  <p class="error-message" *ngIf="duplicateCategory">Category name already exists</p>
+<form fxLayout="column" fxLayoutAlign="start stretch" [formGroup]="categoriesForm">
+  <mat-form-field class="input-default" fxFlex>
+    <input formControlName="name" matInput placeholder="Category Name">
+    <mat-error *ngIf="categoriesForm.get('name').hasError('required')">{{getCategoryErrorMessage()}}</mat-error>
+  </mat-form-field>
+</form>
+<p class="error-message" *ngIf="duplicateCategory">Category name already exists</p>
 
- <div fxLayout="row" fxLayoutAlign="end center">
-    <button mat-raised-button class="btn action-button" (click)="saveCategory()" [disabled]="categoriesForm.invalid">Save</button>
-    <button mat-raised-button class="btn action-button" (click)="cancel()">Cancel</button>
-  </div>
+<div fxLayout="row" fxLayoutAlign="end center">
+  <button mat-raised-button class="btn action-button" (click)="saveCategory()" [disabled]="categoriesForm.invalid">Save</button>
+  <button mat-raised-button class="btn action-button" (click)="cancel()">Cancel</button>
+</div>

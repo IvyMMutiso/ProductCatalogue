@@ -1,14 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { MAT_DIALOG_DEFAULT_OPTIONS } from "@angular/material";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './app-routing.module';
-import { CatalogueService } from './service/catalogue.service';
+import { AppComponent } from "./app.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AppRoutingModule } from "./app-routing.module";
+import { CatalogueService } from "./service/catalogue.service";
 
 import {
   MatToolbarModule,
@@ -20,15 +20,15 @@ import {
   MatIconModule,
   MatInputModule,
   MatTableModule
-} from '@angular/material';
-import { CategoriesListComponent } from './components/categories-list/categories-list.component';
-import { CategoryDetailsComponent } from './components/category-details/category-details.component';
-import { DeleteProductComponent } from './components/delete-product/delete-product.component';
-import { DeleteCategoryComponent } from './components/delete-category/delete-category.component';
-import { ProductDetailsComponent } from './components/product-details/product-details.component';
-import { ProductsReportComponent } from './components/products-report/products-report.component';
-import { ChartsModule } from 'ng2-charts';
-import { ProductsListComponent } from './components/products-list/products-list.component';
+} from "@angular/material";
+import { CategoriesListComponent } from "./components/categories-list/categories-list.component";
+import { CategoryDetailsComponent } from "./components/category-details/category-details.component";
+import { DeleteProductComponent } from "./components/delete-product/delete-product.component";
+import { DeleteCategoryComponent } from "./components/delete-category/delete-category.component";
+import { ProductDetailsComponent } from "./components/product-details/product-details.component";
+import { ProductsReportComponent } from "./components/products-report/products-report.component";
+import { ChartsModule } from "ng2-charts";
+import { ProductsListComponent } from "./components/products-list/products-list.component";
 
 @NgModule({
   declarations: [

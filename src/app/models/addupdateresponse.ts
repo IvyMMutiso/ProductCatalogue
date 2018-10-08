@@ -1,4 +1,4 @@
 export class AddUpdateResponse {
-    success: boolean;
-    error: any[];
+  success: boolean;
+  error: any[];
 }

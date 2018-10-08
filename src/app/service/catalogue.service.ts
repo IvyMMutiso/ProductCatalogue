@@ -1,21 +1,21 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Category } from '../models/category';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { map, skip, catchError} from 'rxjs/operators';
-import { Product } from '../models/product';
-import { AddUpdateResponse } from '../models/addupdateresponse';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Category } from "../models/category";
+import { Observable, BehaviorSubject } from "rxjs";
+import { map, skip, catchError } from "rxjs/operators";
+import { Product } from "../models/product";
+import { AddUpdateResponse } from "../models/addupdateresponse";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class CatalogueService {
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      "Content-Type": "application/json"
     })
   };
-  LIVE_URI = 'http://localhost:3000';
+  LIVE_URI = "http://localhost:3000";
 
   constructor(private httpClient: HttpClient) {}
 
@@ -26,17 +26,17 @@ export class CatalogueService {
   }
 
   addCategory(category: Category): Observable<AddUpdateResponse> {
-    console.log('service : ', category);
+    console.log("service : ", category);
     return this.httpClient
       .put(`${this.LIVE_URI}/categories`, category, this.httpOptions)
-      .pipe(map((res: AddUpdateResponse) =>  res));
+      .pipe(map((res: AddUpdateResponse) => res));
   }
 
   updateCategory(category: Category): Observable<AddUpdateResponse> {
-    console.log('service : ', category);
+    console.log("service : ", category);
     return this.httpClient
       .patch(`${this.LIVE_URI}/categories`, category, this.httpOptions)
-      .pipe(map((res: AddUpdateResponse) =>  res ));
+      .pipe(map((res: AddUpdateResponse) => res));
   }
 
   getCategoryById(): Observable<Category> {

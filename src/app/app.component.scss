@@ -1,8 +1,8 @@
 @import "../styles/inputs.scss";
 @import "../styles/buttons.scss";
 
-.toolbar{
-  background-color: $primary-color;;
+.toolbar {
+  background-color: $primary-color;
   color: #ffffff;
 }
 
@@ -25,7 +25,7 @@
     background-color: rgba(0, 0, 0, 0.12);
   }
   &:focus {
-    color:$secondary-color;
-    background-color:white;
+    color: $secondary-color;
+    background-color: white;
   }
 }

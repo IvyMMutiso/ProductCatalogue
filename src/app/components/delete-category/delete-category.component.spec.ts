@@ -1,16 +1,15 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { DeleteCategoryComponent } from './delete-category.component';
+import { DeleteCategoryComponent } from "./delete-category.component";
 
-describe('DeleteCategoryComponent', () => {
+describe("DeleteCategoryComponent", () => {
   let component: DeleteCategoryComponent;
   let fixture: ComponentFixture<DeleteCategoryComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeleteCategoryComponent ]
-    })
-    .compileComponents();
+      declarations: [DeleteCategoryComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('DeleteCategoryComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

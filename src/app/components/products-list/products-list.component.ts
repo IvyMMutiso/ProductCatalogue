@@ -1,25 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
 import {
   MatDialogConfig,
   MatDialog,
   MatTableDataSource
-} from '@angular/material';
-import { Observable } from 'rxjs';
-import { Product } from '../../models/product';
-import { CatalogueService } from '../../service/catalogue.service';
-import { ProductDetailsComponent } from '../product-details/product-details.component';
-import { DeleteProductComponent } from '../delete-product/delete-product.component';
+} from "@angular/material";
+import { Observable } from "rxjs";
+import { Product } from "../../models/product";
+import { CatalogueService } from "../../service/catalogue.service";
+import { ProductDetailsComponent } from "../product-details/product-details.component";
+import { DeleteProductComponent } from "../delete-product/delete-product.component";
 
 @Component({
-  selector: 'app-products-list',
-  templateUrl: './products-list.component.html',
-  styleUrls: ['./products-list.component.scss']
+  selector: "app-products-list",
+  templateUrl: "./products-list.component.html",
+  styleUrls: ["./products-list.component.scss"]
 })
 export class ProductsListComponent implements OnInit {
   products: Product[];
   products$: Observable<Product[]>;
-  displayedColumns: string[] = ['productName', 'categoryName', 'actions'];
+  displayedColumns: string[] = ["productName", "categoryName", "actions"];
   dataSource: MatTableDataSource<Product>;
 
   constructor(
@@ -45,12 +45,14 @@ export class ProductsListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.minWidth = '450px';
+    dialogConfig.minWidth = "450px";
 
-    this.dialog.open(ProductDetailsComponent, dialogConfig)
-    .afterClosed().subscribe(result => {
+    this.dialog
+      .open(ProductDetailsComponent, dialogConfig)
+      .afterClosed()
+      .subscribe(result => {
         this.getProducts();
-    });
+      });
   }
 
   editProduct(element) {
@@ -68,7 +70,7 @@ export class ProductsListComponent implements OnInit {
 
     const dialogRef = this.dialog.open(component, {
       data: product,
-      panelClass: 'product-dialog',
+      panelClass: "product-dialog"
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
