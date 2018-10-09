@@ -1,0 +1,7 @@
+<h3>Delete {{header}}</h3>
+<p>Are you sure you want to delete the {{header | lowercase}} ' {{deleteText}} '?</p>
+
+<div fxLayout="row" fxLayoutAlign="end center">
+  <button mat-raised-button class="btn action-button" (click)="deleteItem()">Delete</button>
+  <button mat-raised-button class="btn action-button" (click)="cancel()">Cancel</button>
+</div>

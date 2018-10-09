@@ -23,12 +23,11 @@ import {
 } from "@angular/material";
 import { CategoriesListComponent } from "./components/categories-list/categories-list.component";
 import { CategoryDetailsComponent } from "./components/category-details/category-details.component";
-import { DeleteProductComponent } from "./components/delete-product/delete-product.component";
-import { DeleteCategoryComponent } from "./components/delete-category/delete-category.component";
 import { ProductDetailsComponent } from "./components/product-details/product-details.component";
 import { ProductsReportComponent } from "./components/products-report/products-report.component";
 import { ChartsModule } from "ng2-charts";
 import { ProductsListComponent } from "./components/products-list/products-list.component";
+import { DeleteComponent } from "./components/delete/delete.component";
 
 @NgModule({
   declarations: [
@@ -38,8 +37,7 @@ import { ProductsListComponent } from "./components/products-list/products-list.
     ProductsListComponent,
     ProductsReportComponent,
     CategoriesListComponent,
-    DeleteProductComponent,
-    DeleteCategoryComponent
+    DeleteComponent
   ],
   imports: [
     BrowserModule,
@@ -63,9 +61,8 @@ import { ProductsListComponent } from "./components/products-list/products-list.
   entryComponents: [
     CategoryDetailsComponent,
     ProductDetailsComponent,
-    DeleteProductComponent,
-    DeleteCategoryComponent,
-    ProductsReportComponent
+    ProductsReportComponent,
+    DeleteComponent
   ],
   providers: [
     CatalogueService,

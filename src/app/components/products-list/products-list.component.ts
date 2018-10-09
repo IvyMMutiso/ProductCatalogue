@@ -9,7 +9,7 @@ import { Observable } from "rxjs";
 import { Product } from "../../models/product";
 import { CatalogueService } from "../../service/catalogue.service";
 import { ProductDetailsComponent } from "../product-details/product-details.component";
-import { DeleteProductComponent } from "../delete-product/delete-product.component";
+import { DeleteComponent } from "../delete/delete.component";
 
 @Component({
   selector: "app-products-list",
@@ -60,7 +60,7 @@ export class ProductsListComponent implements OnInit {
   }
 
   deleteProduct(element) {
-    this.showDialog(DeleteProductComponent, element);
+    this.showDialog(DeleteComponent, element);
   }
 
   showDialog(component, product) {

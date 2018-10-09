@@ -7,8 +7,8 @@ import {
 } from "@angular/material";
 import { CatalogueService } from "../../service/catalogue.service";
 import { CategoryDetailsComponent } from "../category-details/category-details.component";
-import { DeleteCategoryComponent } from "../delete-category/delete-category.component";
 import { Observable } from "rxjs";
+import { DeleteComponent } from "../delete/delete.component";
 
 @Component({
   selector: "app-categories-list",
@@ -57,7 +57,7 @@ export class CategoriesListComponent implements OnInit {
   }
 
   deleteCategory(element) {
-    this.showDialog(DeleteCategoryComponent, element);
+    this.showDialog(DeleteComponent, element);
   }
 
   showDialog(component, element) {
